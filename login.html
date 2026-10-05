@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in — STORE HUB</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .auth-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.12) 0%, transparent 60%), var(--bg-primary);
+    }
+    .auth-box {
+      width: 100%;
+      max-width: 440px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 36px;
+      box-shadow: var(--shadow-lg);
+    }
+  </style>
+</head>
+<body class="auth-page">
+
+  <div class="auth-box">
+    <!-- Brand header -->
+    <div style="text-align:center; margin-bottom:28px;">
+      <a href="index.html" class="brand-logo" style="justify-content:center; margin-bottom:12px;">
+        <div class="brand-icon">
+          <svg style="width:20px;height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+        </div>
+        <span class="brand-name-text">STORE HUB</span>
+      </a>
+      <h2 style="font-size:1.4rem; font-weight:700;">Sign in to Store Hub</h2>
+      <p style="color:var(--text-muted); font-size:0.85rem; margin-top:4px;">Use your internal R-Mail address</p>
+    </div>
+
+    <!-- Login Form -->
+    <form id="login-form">
+      <div class="form-group">
+        <label class="form-label" for="login-rmail">R-Mail</label>
+        <input type="email" id="login-rmail" class="form-input" placeholder="rahul1234@storage.hub" value="rahul1234@storage.hub" required autocomplete="username">
+      </div>
+
+      <div class="form-group">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <label class="form-label" for="login-password" style="margin-bottom:0;">Password</label>
+          <a href="#" id="forgot-password-btn" style="font-size:0.8rem; color:var(--accent);">Forgot password</a>
+        </div>
+        <input type="password" id="login-password" class="form-input" placeholder="••••••••" value="Rahul@1234" required autocomplete="current-password">
+      </div>
+
+      <div style="margin-bottom:20px; font-size:0.8rem; color:var(--text-muted); background:var(--bg-primary); padding:10px; border-radius:6px; border:1px solid var(--border-color);">
+        🔑 <strong>Demo Credentials Pre-filled:</strong><br>
+        Owner R-Mail: <code>rahul1234@storage.hub</code><br>
+        Password: <code>Rahul@1234</code>
+      </div>
+
+      <button type="submit" id="login-submit-btn" class="btn-primary" style="width:100%; padding:12px; font-size:0.95rem; margin-bottom:12px;">
+        Login
+      </button>
+    </form>
+
+    <div style="display:flex; justify-content:center; gap:8px; font-size:0.88rem; color:var(--text-muted); margin-top:16px;">
+      <span>Don't have an R-Mail account?</span>
+      <a href="signup.html" style="color:var(--accent); font-weight:600;">Create account</a>
+    </div>
+  </div>
+
+  <script src="js/storage-engine.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      StoreHubAuth.initLoginForm();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create your Store Hub account — STORE HUB</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .auth-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.12) 0%, transparent 60%), var(--bg-primary);
+    }
+    .auth-box {
+      width: 100%;
+      max-width: 480px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 36px;
+      box-shadow: var(--shadow-lg);
+    }
+    .step-indicators {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .step-indicators::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      right: 10px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+    .step-indicator-item {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--bg-primary);
+      border: 2px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      position: relative;
+      z-index: 2;
+      transition: var(--transition);
+    }
+    .step-indicator-item.active {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+    .step-indicator-item.completed {
+      border-color: var(--success);
+      background: var(--success);
+      color: #ffffff;
+    }
+    .wizard-step-panel {
+      display: none;
+      animation: fadeIn 0.25s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .dob-row {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr 1.2fr;
+      gap: 12px;
+    }
+    .strength-track {
+      height: 6px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 9999px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+    .strength-bar {
+      height: 100%;
+      width: 0%;
+      transition: all 0.3s ease;
+    }
+    .account-summary-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.9rem;
+    }
+    .summary-row:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body class="auth-page">
+
+  <div class="auth-box">
+    <!-- Brand header -->
+    <div style="text-align:center; margin-bottom:24px;">
+      <a href="index.html" class="brand-logo" style="justify-content:center; margin-bottom:12px;">
+        <div class="brand-icon">
+          <svg style="width:20px;height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+        </div>
+        <span class="brand-name-text">STORE HUB</span>
+      </a>
+      <h2 style="font-size:1.4rem; font-weight:700;">Create your Store Hub account</h2>
+      <p style="color:var(--text-muted); font-size:0.85rem; margin-top:4px;">Secure internal R-Mail identity with 5 GB free storage</p>
+    </div>
+
+    <!-- Step Indicators -->
+    <div class="step-indicators">
+      <div class="step-indicator-item active" id="ind-1">1</div>
+      <div class="step-indicator-item" id="ind-2">2</div>
+      <div class="step-indicator-item" id="ind-3">3</div>
+      <div class="step-indicator-item" id="ind-4">4</div>
+      <div class="step-indicator-item" id="ind-5">✓</div>
+    </div>
+
+    <!-- STEP 1: Choose R-Mail -->
+    <div class="wizard-step-panel" id="step-1-panel" style="display:block;">
+      <div class="form-group">
+        <label class="form-label">Choose your R-Mail</label>
+        <input type="text" id="signup-rmail" class="form-input" placeholder="Example11@storage.hub" autocomplete="off" spellcheck="false">
+        <div id="rmail-feedback" style="font-size:0.8rem; margin-top:6px; min-height:18px;"></div>
+      </div>
+      <button class="btn-primary" id="step-1-next-btn" style="width:100%; padding:12px; margin-top:10px;" onclick="StoreHubAuth.validateStep1()" disabled>
+        Next
+      </button>
+      <div style="text-align:center; margin-top:20px; font-size:0.85rem; color:var(--text-muted);">
+        Already have an account? <a href="login.html" style="color:var(--accent); font-weight:600;">Sign in</a>
+      </div>
+    </div>
+
+    <!-- STEP 2: Name -->
+    <div class="wizard-step-panel" id="step-2-panel">
+      <div class="form-group">
+        <label class="form-label">First Name</label>
+        <input type="text" id="signup-firstname" class="form-input" placeholder="First Name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Last Name</label>
+        <input type="text" id="signup-lastname" class="form-input" placeholder="Last Name">
+      </div>
+      <button class="btn-primary" style="width:100%; padding:12px; margin-top:10px;" onclick="StoreHubAuth.validateStep2()">
+        Next
+      </button>
+    </div>
+
+    <!-- STEP 3: Date of Birth -->
+    <div class="wizard-step-panel" id="step-3-panel">
+      <div class="form-group">
+        <label class="form-label">Date of Birth</label>
+        <div class="dob-row">
+          <div>
+            <input type="number" id="signup-dob-day" class="form-input" placeholder="Day (DD)" min="1" max="31">
+          </div>
+          <div>
+            <select id="signup-dob-month" class="form-input">
+              <option value="">Month</option>
+              <option value="1">January</option>
+              <option value="2">February</option>
+              <option value="3">March</option>
+              <option value="4">April</option>
+              <option value="5">May</option>
+              <option value="6">June</option>
+              <option value="7">July</option>
+              <option value="8">August</option>
+              <option value="9">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
+            </select>
+          </div>
+          <div>
+            <input type="number" id="signup-dob-year" class="form-input" placeholder="Year (YYYY)" min="1920" max="2026">
+          </div>
+        </div>
+      </div>
+      <button class="btn-primary" style="width:100%; padding:12px; margin-top:10px;" onclick="StoreHubAuth.validateStep3()">
+        Next
+      </button>
+    </div>
+
+    <!-- STEP 4: Password -->
+    <div class="wizard-step-panel" id="step-4-panel">
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" id="signup-password" class="form-input" placeholder="••••••••">
+        <div class="strength-track">
+          <div class="strength-bar" id="password-strength-bar"></div>
+        </div>
+        <div id="password-strength-text" style="font-size:0.75rem; margin-top:4px; color:var(--text-muted);">Strength: Enter password</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Confirm Password</label>
+        <input type="password" id="signup-confirm-password" class="form-input" placeholder="••••••••">
+      </div>
+      <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:16px;">
+        Passwords are cryptographically salted and hashed. We never store plaintext passwords.
+      </p>
+      <button class="btn-primary" id="step-4-next-btn" style="width:100%; padding:12px;" onclick="StoreHubAuth.validateStep4AndSubmit()">
+        Next
+      </button>
+    </div>
+
+    <!-- STEP 5: Complete -->
+    <div class="wizard-step-panel" id="step-5-panel">
+      <div style="text-align:center; margin-bottom:16px;">
+        <div style="width:50px; height:50px; border-radius:50%; background:rgba(16,185,129,0.2); color:var(--success); display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px;">
+          <svg style="width:28px;height:28px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <h3 style="font-size:1.3rem; font-weight:700;">Your Store Hub account is ready!</h3>
+      </div>
+
+      <div class="account-summary-card">
+        <div class="summary-row">
+          <span style="color:var(--text-muted);">Full Name</span>
+          <strong id="complete-fullname" style="color:var(--text-primary);">—</strong>
+        </div>
+        <div class="summary-row">
+          <span style="color:var(--text-muted);">R-Mail</span>
+          <strong id="complete-rmail" style="color:var(--accent);">—</strong>
+        </div>
+        <div class="summary-row">
+          <span style="color:var(--text-muted);">Unique UID</span>
+          <strong id="complete-uid" style="font-family:monospace; color:var(--text-primary);">—</strong>
+        </div>
+        <div class="summary-row">
+          <span style="color:var(--text-muted);">Free Storage</span>
+          <strong id="complete-storage" style="color:var(--success);">5 GB</strong>
+        </div>
+      </div>
+
+      <button class="btn-primary" style="width:100%; padding:12px;" onclick="StoreHubAuth.continueToDashboard()">
+        Continue to Store Hub
+      </button>
+    </div>
+
+  </div>
+
+  <script src="js/storage-engine.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      StoreHubAuth.initSignupWizard();
+    });
+  </script>
+</body>
+</html>

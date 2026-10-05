@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STORE HUB — Modern Cloud Storage & Web Project Platform</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .hero-section {
+      text-align: center;
+      padding: 90px 20px 60px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      border-radius: 9999px;
+      color: #60a5fa;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 36px;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: var(--transition);
+    }
+    .feature-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .feature-icon-box {
+      width: 50px;
+      height: 50px;
+      border-radius: var(--radius-md);
+      background: rgba(59, 130, 246, 0.12);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .landing-nav {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      border-bottom: 1px solid var(--border-color);
+      background: var(--bg-topbar);
+      backdrop-filter: var(--backdrop-blur);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Landing Topbar -->
+  <header class="landing-nav">
+    <a href="index.html" class="brand-logo">
+      <div class="brand-icon">
+        <svg style="width:20px;height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+      </div>
+      <span class="brand-name-text">STORE HUB</span>
+    </a>
+
+    <div style="display:flex; align-items:center; gap:16px;">
+      <a href="public-projects.html" class="nav-link" style="padding:6px 12px;">🌐 Public Projects</a>
+      <button class="theme-toggle-btn" onclick="StoreHubApp.toggleThemeMode()" title="Toggle theme">
+        <svg style="width:18px;height:18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+      </button>
+      <div id="user-profile-widget" style="display:flex; align-items:center; gap:10px;">
+        <a href="login.html" class="btn-secondary" style="font-size:0.85rem; padding:8px 16px;">Log In</a>
+        <a href="signup.html" class="btn-primary" style="font-size:0.85rem; padding:8px 16px;">Create Account</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main style="flex:1;">
+    <section class="hero-section">
+      <div class="hero-badge">
+        <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        5 GB Free Cloud Storage • Internal R-Mail Identity
+      </div>
+      <h1 class="hero-title">Next-Gen Cloud Storage & Web Project Publishing</h1>
+      <p class="hero-subtitle">
+        Secure personal cloud storage with internal R-Mail accounts, Google Drive-style file management, and instant web app hosting powered by the StoreHub SDK.
+      </p>
+      <div class="hero-actions">
+        <a href="signup.html" class="btn-primary" style="padding:14px 28px; font-size:1.05rem; border-radius:var(--radius-md);">
+          Get 5 GB Free Storage
+        </a>
+        <a href="public-projects.html" class="btn-secondary" style="padding:14px 24px; font-size:1.05rem; border-radius:var(--radius-md);">
+          Explore Public Projects
+        </a>
+      </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon-box">
+          <svg style="width:24px;height:24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:8px;">Store Hub R-Mail</h3>
+        <p style="color:var(--text-secondary); font-size:0.9rem; line-height:1.6;">
+          Autonomous identity system. Every user gets a unique <code>username@storage.hub</code> address and custom UID without any third-party Google dependence.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-box">
+          <svg style="width:24px;height:24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1.5 3 3.5 3h9c2 0 3.5-1 3.5-3V7c0-2-1.5-3-3.5-3h-9C5.5 4 4 5 4 7z"/></svg>
+        </div>
+        <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:8px;">5 GB Free Drive</h3>
+        <p style="color:var(--text-secondary); font-size:0.9rem; line-height:1.6;">
+          Real, client & server-enforced storage. Drag-and-drop file uploader, nested folders, file previews, stars, and safe trash recovery.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-box">
+          <svg style="width:24px;height:24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        </div>
+        <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:8px;">StoreHub Web Projects</h3>
+        <p style="color:var(--text-secondary); font-size:0.9rem; line-height:1.6;">
+          Author web applications right in your browser with <code>index.html</code>, <code>style.css</code>, <code>script.js</code>, and the integrated <code>store.js</code> client SDK.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-box">
+          <svg style="width:24px;height:24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+        </div>
+        <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:8px;">Granular Sharing</h3>
+        <p style="color:var(--text-secondary); font-size:0.9rem; line-height:1.6;">
+          Share securely with other Store Hub R-Mails as Viewer or Editor, or generate encrypted public links with one-click toggles.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-box">
+          <svg style="width:24px;height:24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        </div>
+        <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:8px;">Sandbox Security</h3>
+        <p style="color:var(--text-secondary); font-size:0.9rem; line-height:1.6;">
+          Cryptographic password hashing, isolated iframe sandboxes for hosted code, and serverless client database persistence.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-box">
+          <svg style="width:24px;height:24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/></svg>
+        </div>
+        <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:8px;">Owner Brand Control</h3>
+        <p style="color:var(--text-secondary); font-size:0.9rem; line-height:1.6;">
+          Dedicated Owner Control Center for <code>rahul1234@storage.hub</code> with live presets (Classic, Modern, Glass, Dark, Neon, Cyber, etc.).
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer style="padding:24px 32px; border-top:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; font-size:0.85rem; color:var(--text-muted); background:var(--bg-secondary);">
+    <div>
+      © 2026 <strong class="brand-name-text">STORE HUB</strong> Cloud Platform. Free 5 GB User Tier.
+    </div>
+    <div style="display:flex; gap:16px;">
+      <a href="public-projects.html">Public Projects</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Create Account</a>
+      <a href="owner.html">Owner Center</a>
+    </div>
+  </footer>
+
+  <script src="js/storage-engine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
